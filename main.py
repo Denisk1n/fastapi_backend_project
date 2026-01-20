@@ -29,6 +29,13 @@ notes = [
 def get_all_notes():
    return notes
 
+@app.get("/notes/{note_id}")
+def get_note(note_id: int):
+   for note in notes:
+      if note["id"] == note_id:
+         return note
+   return {"error": "Note not found"}
+
 
 
 if __name__ == "__main__":
